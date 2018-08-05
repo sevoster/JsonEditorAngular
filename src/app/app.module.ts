@@ -4,11 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
+import { JsonChooserComponent } from './json-chooser/json-chooser.component';
+import { EditorComponent } from './editor/editor.component';
+import { SaverComponent } from './saver/saver.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    JsonChooserComponent,
+    EditorComponent,
+    SaverComponent
   ],
   imports: [
     BrowserModule,

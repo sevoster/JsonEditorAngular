@@ -1,17 +1,17 @@
 <nav>
   <ul>
     <li>
-      <a [class.activated]="currentUrl == '/'">
+      <a routerLink="/select" [class.activated]="currentUrl == '/select'">
         <i class="material-icons">folder_open</i>
       </a>
     </li>
     <li>
-      <a [class.activated]="currentUrl == '/edit'">
+      <a routerLink="/edit" [class.activated]="currentUrl == '/edit'">
         <i class="material-icons">edit</i>
       </a>
     </li>
     <li>
-      <a [class.activated]="currentUrl == '/save'">
+      <a routerLink="/save" [class.activated]="currentUrl == '/save'">
         <i class="material-icons">save</i>
       </a>
     </li>
