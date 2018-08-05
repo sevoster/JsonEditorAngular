@@ -1,3 +1,10 @@
-<p>
-  json-chooser works!
-</p>
+<h1 style="text-align: center">Choose Your Json File</h1>
+<div class="container">
+  <button class="material-icons" (click)="loadFromFile()">folder_open</button>
+  <button class="material-icons" (click)="loadFromUrl()">cloud_download</button>
+  <button class="material-icons" (click)="createNewFile()">create</button>
+</div>
+
+<div *ngIf="selectedFile">
+  <h2 style="text-align: center;">File: {{ selectedFile }}</h2>
+</div>

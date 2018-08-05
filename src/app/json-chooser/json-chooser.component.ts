@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JsonChooserComponent implements OnInit {
 
+  selectedFile: string;
+
   constructor() { }
 
   ngOnInit() {

@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '/select',
     pathMatch: 'full'
-  }
+  },
   {
     path: 'edit',
     component: EditorComponent

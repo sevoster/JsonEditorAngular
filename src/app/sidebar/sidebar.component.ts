@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(private router: Router) {
     router.events.subscribe((_: NavigationEnd) => {
-      if (_.url) { this.currentUrl = _.url }
+      if (_.urlAfterRedirects) { this.currentUrl = _.urlAfterRedirects }
     })
   }
 
