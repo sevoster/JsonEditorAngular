@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { JsonFileService } from '../json-file.service';
+
+
 @Component({
   selector: 'app-json-chooser',
   templateUrl: './json-chooser.component.html',
@@ -7,11 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JsonChooserComponent implements OnInit {
 
-  selectedFile: string;
+  fileContent: string;
+  fileName: string = "MyFile.json";
+  mode: string;
 
-  constructor() { }
+  // TODO: how to load file correctly?
+  file: any;
+
+  constructor(private jsonFileService: JsonFileService) { }
 
   ngOnInit() {
+  }
+
+  fileChanged(e) {
+    this.file = e.target.files[0];
+  }
+
+  loadFromFile() {
+    let fileReader = new FileReader()
+    fileReader.onload = (e) => {
+      this.jsonFileService.fileName = this.file.name
+      this.jsonFileService.fileContent = fileReader.result
+    }
+
+    fileReader.readAsText(this.file)
+  }
+
+  loadFromUrl(url: string) {
+    console.log("Take from URL: " + url)
+  }
+
+  createNewFile(name: string) {
+    console.log("Create New " + name)
+    this.jsonFileService.fileName = name
+    this.jsonFileService.fileContent = ""
   }
 
 }

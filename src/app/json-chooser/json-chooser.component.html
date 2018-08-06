@@ -1,10 +1,38 @@
-<h1 style="text-align: center">Choose Your Json File</h1>
-<div class="container">
-  <button class="material-icons" (click)="loadFromFile()">folder_open</button>
-  <button class="material-icons" (click)="loadFromUrl()">cloud_download</button>
-  <button class="material-icons" (click)="createNewFile()">create</button>
+<h1 class="center">Choose Your Json File</h1>
+
+<div class="center container">
+  <button (click)="mode = 'file'" class="btn inner tile" [class.activated]="mode === 'file'">
+    <i class="material-icons md-60">folder_open</i>
+    Device
+  </button>
+  <button (click)="mode = 'url'" class="btn inner tile" [class.activated]="mode === 'url'">
+    <span class="material-icons md-60">cloud_download</span>
+    <span>URL</span>
+  </button>
+  <button (click)="mode = 'new'" class="btn inner tile" [class.activated]="mode === 'new'">
+    <i class="material-icons md-60">fiber_new</i>
+    Create
+  </button>
 </div>
 
-<div *ngIf="selectedFile">
-  <h2 style="text-align: center;">File: {{ selectedFile }}</h2>
+
+<div class="center" *ngIf="mode">
+  <div *ngIf="mode === 'url'">
+    <label>URL: </label>
+    <input #urlGrabber type="url">
+
+    <button (click)="loadFromUrl(urlGrabber.value)">Download</button>
+  </div>
+
+  <div *ngIf="mode === 'file'">
+    <input #fileGrabber type="file" (change)="fileChanged($event)">
+
+    <button (click)="loadFromFile()">Load </button>
+  </div>
+
+  <div *ngIf="mode === 'new'">
+    <label>Name: </label>
+    <input #nameGrabber type="text">
+    <button (click)="createNewFile(nameGrabber.value)">Create</button>
+  </div>
 </div>
