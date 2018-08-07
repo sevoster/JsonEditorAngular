@@ -1,3 +1,5 @@
 <h1 class="center">File: {{ jsonFileService.fileName }}</h1>
 
-<p>{{jsonFileService.fileContent}}</p>
+<textarea #textArea class="text-editor">{{ jsonFileService.fileContent }}</textarea>
+
+<button (click)="save(textArea.value)">Save</button>

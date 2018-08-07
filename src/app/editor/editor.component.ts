@@ -16,4 +16,8 @@ export class EditorComponent implements OnInit {
   ngOnInit() {
   }
 
+  save(newValue) {
+    this.jsonFileService.fileContent = newValue;
+  }
+
 }

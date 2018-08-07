@@ -30,7 +30,7 @@ export class JsonChooserComponent implements OnInit {
     let fileReader = new FileReader()
     fileReader.onload = (e) => {
       this.jsonFileService.fileName = this.file.name
-      this.jsonFileService.fileContent = fileReader.result
+      this.jsonFileService.fileContent = JSON.stringify(JSON.parse(fileReader.result), null, 2)
     }
 
     fileReader.readAsText(this.file)
