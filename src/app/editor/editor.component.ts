@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { JsonFileService } from '../json-file.service';
 
@@ -10,18 +11,22 @@ import { JsonFileService } from '../json-file.service';
 })
 export class EditorComponent implements OnInit {
 
-  parsedContent: string = null;
+  parsedContent: object = null;
 
-  constructor(private jsonFileService: JsonFileService) {
+  constructor(private jsonFileService: JsonFileService, private router: Router) {
     console.log("Created")
     this.parsedContent = JSON.parse(jsonFileService.fileContent)
    }
 
   ngOnInit() {
+    if (this.jsonFileService.fileName === null) {
+      console.log("Select file first")
+      this.router.navigateByUrl("/select");
+    }
   }
 
   save(newValue) {
-    this.jsonFileService.fileContent = this.parsedContent;
+    this.jsonFileService.fileContent = newValue
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { JsonFileService } from '../json-file.service';
+import { ClassMethod } from '../../../node_modules/@angular/compiler';
 
 
 @Component({
@@ -10,16 +12,18 @@ import { JsonFileService } from '../json-file.service';
 })
 export class JsonChooserComponent implements OnInit {
 
-  fileContent: string;
-  fileName: string = "MyFile.json";
   mode: string;
 
   // TODO: how to load file correctly?
   file: any;
 
-  constructor(private jsonFileService: JsonFileService) { }
+  constructor(private jsonFileService: JsonFileService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  private goNext() {
+    this.router.navigateByUrl("/edit"); 
   }
 
   fileChanged(e) {
@@ -31,19 +35,22 @@ export class JsonChooserComponent implements OnInit {
     fileReader.onload = (e) => {
       this.jsonFileService.fileName = this.file.name
       this.jsonFileService.fileContent = JSON.stringify(JSON.parse(fileReader.result), null, 2)
+      this.goNext();
     }
 
-    fileReader.readAsText(this.file)
+    fileReader.readAsText(this.file);
   }
 
   loadFromUrl(url: string) {
     console.log("Take from URL: " + url)
+    console.log("Method is not implemented")
   }
 
   createNewFile(name: string) {
     console.log("Create New " + name)
     this.jsonFileService.fileName = name + ".json"
-    this.jsonFileService.fileContent = ""
+    this.jsonFileService.fileContent = "{}"
+    this.goNext()
   }
 
 }

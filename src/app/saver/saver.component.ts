@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { JsonFileService } from '../json-file.service';
 
@@ -11,9 +12,12 @@ import { JsonFileService } from '../json-file.service';
 export class SaverComponent implements OnInit {
   textFile: any = null;
 
-  constructor(private jsonFileService: JsonFileService) { }
+  constructor(private jsonFileService: JsonFileService, private router: Router) { }
 
   ngOnInit() {
+    if (this.jsonFileService.fileName === null) {
+      this.router.navigateByUrl("/select");
+    }
   }
 
   private prepareFile() {
