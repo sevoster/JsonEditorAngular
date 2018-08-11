@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class JsonFileService {
-  fileContent: string;
-  fileName: string = "NewFile.json";
+  fileContent: string = null;
+  fileName: string = null;
   
   constructor() { }
+
 }

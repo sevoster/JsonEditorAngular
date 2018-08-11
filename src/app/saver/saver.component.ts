@@ -9,7 +9,6 @@ import { JsonFileService } from '../json-file.service';
   styleUrls: ['./saver.component.scss']
 })
 export class SaverComponent implements OnInit {
-  path: string = "../../assets/json-files/current.json"
   textFile: any = null;
 
   constructor(private jsonFileService: JsonFileService) { }
@@ -17,7 +16,7 @@ export class SaverComponent implements OnInit {
   ngOnInit() {
   }
 
-  prepareFile() {
+  private prepareFile() {
     var data = new Blob([this.jsonFileService.fileContent], {type: "text/plain"})
 
     if (this.textFile !== null) {

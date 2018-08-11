@@ -6,12 +6,12 @@
       </a>
     </li>
     <li>
-      <a routerLink="/edit" [class.activated]="currentUrl == '/edit'" title="Edit">
+      <a [routerLink]="jsonFileService.fileName? '/edit' : null" [class.activated]="currentUrl == '/edit'" title="Edit">
         <i class="material-icons">edit</i>
       </a>
     </li>
     <li>
-      <a routerLink="/save" [class.activated]="currentUrl == '/save'" title="Save">
+      <a  [routerLink]="jsonFileService.fileName? '/save' : null" [class.activated]="currentUrl == '/save'" title="Save">
         <i class="material-icons">save</i>
       </a>
     </li>

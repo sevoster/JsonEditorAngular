@@ -42,7 +42,7 @@ export class JsonChooserComponent implements OnInit {
 
   createNewFile(name: string) {
     console.log("Create New " + name)
-    this.jsonFileService.fileName = name
+    this.jsonFileService.fileName = name + ".json"
     this.jsonFileService.fileContent = ""
   }
 

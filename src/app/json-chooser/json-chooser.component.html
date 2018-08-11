@@ -25,9 +25,9 @@
   </div>
 
   <div *ngIf="mode === 'file'">
-    <input #fileGrabber type="file" (change)="fileChanged($event)">
+    <input #fileGrabber type="file" accept=".json" (change)="fileChanged($event)">
 
-    <button (click)="loadFromFile()">Load </button>
+    <button (click)="loadFromFile()">Load</button>
   </div>
 
   <div *ngIf="mode === 'new'">
