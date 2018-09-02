@@ -1,5 +1,10 @@
 <h1 class="center">Edit Json File</h1>
 
-<textarea #textArea class="text-editor">{{ jsonFileService.fileContent }}</textarea>
-
-<button (click)="save(textArea.value)">Save</button>
+<div *ngFor="let path of objects()">
+    <label *ngFor="let i of getRange(path.length)">-></label>
+    <label>
+        {{ getKey(path) }}:
+        <input *ngIf="!isDict(getValue(path))" value="{{ getValue(path) }}">
+    </label>
+</div>
+    <!-- <button (click)="save(textArea.value)">Save</button> -->
