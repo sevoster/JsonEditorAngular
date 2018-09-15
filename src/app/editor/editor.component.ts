@@ -29,6 +29,11 @@ export class EditorComponent implements OnInit {
       }
       return res
     }
+    if (this.isDict(obj)) {
+      for (var key in obj) {
+        obj[key] = this.constructDictForms(obj[key])
+      }
+    }
     return obj
   }
 
@@ -36,10 +41,10 @@ export class EditorComponent implements OnInit {
     return Array.from(this.traverse())
   }
 
-  // TODO: Assumption that there are no identical keys (bad assumption)
+  // TODO: Assumption that there are no identical keys (need to get rid of it)
   * traverse() {
     var currentPath = [];
-    var toTraverse = Object.keys(this.parsedContent);
+    var toTraverse = Object.keys(this.parsedContent).reverse();
     while (toTraverse.length > 0) {
       var key = toTraverse[toTraverse.length - 1];
       if (currentPath[currentPath.length - 1] === key) {
@@ -52,7 +57,7 @@ export class EditorComponent implements OnInit {
       var value = this.getValue(currentPath);
       console.log("VALUE FOR PATH: " + value + " " + currentPath)
       if (this.isDict(value)) {
-        toTraverse = toTraverse.concat(Object.keys(value));
+        toTraverse = toTraverse.concat(Object.keys(value).reverse());
       }
     }
   }
@@ -78,7 +83,7 @@ export class EditorComponent implements OnInit {
   }
 
   getPaddingStyle(path) {
-    return {'padding-left': '' + path.length * 10 + 'px'}
+    return {'padding-left': '' + (path.length - 1) * 10 + 'px'}
   }
 
   getRange(num) {

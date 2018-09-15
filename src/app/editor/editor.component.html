@@ -1,7 +1,7 @@
 <h1 class="center">Edit Json File</h1>
 
 <div *ngFor="let path of objects()">
-    <label *ngFor="let i of getRange(path.length)">-></label>
+    <label *ngFor="let i of getRange(path.length - 1)">-></label>
     <label>
         {{ getKey(path) }}:
         <input *ngIf="!isDict(getValue(path))" value="{{ getValue(path) }}">

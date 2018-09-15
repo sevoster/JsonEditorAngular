@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { JsonFileService } from '../json-file.service';
-import { ClassMethod } from '../../../node_modules/@angular/compiler';
 
 
 @Component({

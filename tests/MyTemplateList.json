@@ -2,7 +2,12 @@
     {
         "name": "John",
         "age": 28,
-        "city": "Los Angeles"
+        "city": "Los Angeles",
+        "info": {
+            "hobby": "music",
+            "numbers": [0, 1, 3, 2],
+            "text": "Don't know what to do with myself"
+        }
     },
     {
         "name": "Sam",
